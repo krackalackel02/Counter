@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<style>
+		body,
+		body * {
+			font-size: 1.1em;
+			margin: 0;
+			font-family: "Press Start 2P", cursive;
+		}
+		.container {
+			background: rgb(2, 0, 36);
+			background: linear-gradient(
+				90deg,
+				rgba(2, 0, 36, 1) 0%,
+				rgba(9, 9, 121, 1) 5%,
+				rgba(0, 212, 255, 1) 100%
+			);
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.btn {
+			background-color: rgba(255, 255, 255, 0.5);
+			padding: 20px;
+			border-radius: 10px;
+			margin-top: 10px;
+		}
+		.title {
+			position: absolute;
+			left: 10vw;
+			top: 10vh;
+			font-size: 5rem;
+			text-decoration-line: underline;
+		}
+		.colourName {
+			background-color: rgba(255, 255, 255, 0.5);
+			border-radius: 10px;
+			padding: 10px;
+		}
+		.colourName:has(.rgb) {
+			position: relative;
+			left: -30px;
+		}
+		.selector {
+			margin-top: 10px;
+			display: flex;
+		}
+		.switches {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+		.toggle {
+			visibility: hidden;
+		}
+		.label {
+			background-color: rgba(171, 171, 171, 0.7);
+			width: 80px;
+			height: 20px;
+			border-radius: 10px;
+			position: relative;
+			cursor: pointer;
+			display: inline-block; /* Add this line to make the label visible */
+		}
+
+		.ball {
+			position: absolute;
+			top: 2px;
+			left: 2px;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background-color: rgba(255, 255, 255, 0.5);
+			transition: transform 0.3s;
+		}
+		.toggle:checked + .label .ball {
+			transform: translateX(60px);
+		}
+		#header {
+			font-size: 3em;
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			padding-left: 7px;
+			padding-top: 3px;
+		}
+		.button-container {
+			margin-top: 40px;
+		}
+	</style>
+	<body>
+		<div class="title">Counter</div>
+		<div class="container">
+			<div class="colourName">
+				<div id="header">0</div>
+			</div>
+
+			<div class="button-container">
+				<button class="btn" onclick="minus()">Decrease</button>
+				<button class="btn" onclick="reset()">Reset</button>
+				<button class="btn" onclick="add()">Increase</button>
+			</div>
+		</div>
+		<script>
+			let header = document.getElementById("header");
+            function add() {
+                header.innerText = Number(header.innerText ) + 1
+            }
+            function reset() {
+                header.innerText = "0"
+                
+			}
+            function minus() {
+                header.innerText = Number(header.innerText ) -1
+				
+			}
+            window.addEventListener("DOMContentLoaded",reset)
+		</script>
+	</body>
+</html>
