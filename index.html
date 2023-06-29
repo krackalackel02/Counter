@@ -44,50 +44,6 @@
 			font-size: 5rem;
 			text-decoration-line: underline;
 		}
-		.colourName {
-			background-color: rgba(255, 255, 255, 0.5);
-			border-radius: 10px;
-			padding: 10px;
-		}
-		.colourName:has(.rgb) {
-			position: relative;
-			left: -30px;
-		}
-		.selector {
-			margin-top: 10px;
-			display: flex;
-		}
-		.switches {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
-		}
-		.toggle {
-			visibility: hidden;
-		}
-		.label {
-			background-color: rgba(171, 171, 171, 0.7);
-			width: 80px;
-			height: 20px;
-			border-radius: 10px;
-			position: relative;
-			cursor: pointer;
-			display: inline-block; /* Add this line to make the label visible */
-		}
-
-		.ball {
-			position: absolute;
-			top: 2px;
-			left: 2px;
-			width: 16px;
-			height: 16px;
-			border-radius: 50%;
-			background-color: rgba(255, 255, 255, 0.5);
-			transition: transform 0.3s;
-		}
-		.toggle:checked + .label .ball {
-			transform: translateX(60px);
-		}
 		#header {
 			font-size: 3em;
 			display: flex;
@@ -143,15 +99,15 @@
 			}
 			function add() {
 				header.innerText = Number(header.innerText) + 1;
-				colourChange()
+				colourChange();
 			}
 			function reset() {
 				header.innerText = "0";
-				colourChange()
+				colourChange();
 			}
 			function minus() {
 				header.innerText = Number(header.innerText) - 1;
-				colourChange()
+				colourChange();
 			}
 			window.addEventListener("DOMContentLoaded", reset);
 		</script>
