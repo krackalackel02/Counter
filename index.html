@@ -19,7 +19,6 @@
 			font-family: "Press Start 2P", cursive;
 		}
 		.container {
-			background: rgb(2, 0, 36);
 			background: linear-gradient(
 				90deg,
 				rgba(2, 0, 36, 1) 0%,
@@ -102,22 +101,17 @@
 			margin-top: 40px;
 		}
 
-
 		@media screen and (max-width: 1200px) {
-	.title {
-		font-size: 3em;
-		left: 6vw
-	}
-	.button-container{
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-
-	}
-}
-
-
-
+			.title {
+				font-size: 3em;
+				left: 6vw;
+			}
+			.button-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+		}
 	</style>
 	<body>
 		<div class="title">Counter</div>
@@ -134,18 +128,32 @@
 		</div>
 		<script>
 			let header = document.getElementById("header");
-            function add() {
-                header.innerText = Number(header.innerText ) + 1
-            }
-            function reset() {
-                header.innerText = "0"
-                
+			let background = document.getElementsByClassName("container")[0];
+			function colourChange() {
+				if (Number(header.innerText) > 0) {
+					background.style.background =
+						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(0, 212, 255, 1) 100%)";
+				} else if (Number(header.innerText) < 0) {
+					background.style.background =
+						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(255, 0, 0, 1) 100%)";
+				} else {
+					background.style.background =
+						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(0, 255, 0, 1) 100%)";
+				}
 			}
-            function minus() {
-                header.innerText = Number(header.innerText ) -1
-				
+			function add() {
+				header.innerText = Number(header.innerText) + 1;
+				colourChange()
 			}
-            window.addEventListener("DOMContentLoaded",reset)
+			function reset() {
+				header.innerText = "0";
+				colourChange()
+			}
+			function minus() {
+				header.innerText = Number(header.innerText) - 1;
+				colourChange()
+			}
+			window.addEventListener("DOMContentLoaded", reset);
 		</script>
 	</body>
 </html>
