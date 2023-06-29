@@ -19,18 +19,14 @@
 			font-family: "Press Start 2P", cursive;
 		}
 		.container {
-			background: linear-gradient(
-				90deg,
-				rgba(2, 0, 36, 1) 0%,
-				rgba(9, 9, 121, 1) 5%,
-				rgba(0, 212, 255, 1) 100%
-			);
 			height: 100vh;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			transition: background-color 0.5s ease;
 		}
+
 		.btn {
 			background-color: rgba(255, 255, 255, 0.5);
 			padding: 20px;
@@ -86,17 +82,27 @@
 			let header = document.getElementById("header");
 			let background = document.getElementsByClassName("container")[0];
 			function colourChange() {
-				if (Number(header.innerText) > 0) {
-					background.style.background =
-						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(0, 212, 255, 1) 100%)";
-				} else if (Number(header.innerText) < 0) {
-					background.style.background =
-						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(255, 0, 0, 1) 100%)";
-				} else {
-					background.style.background =
-						"linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 5%, rgba(0, 255, 0, 1) 100%)";
-				}
-			}
+  const value = Number(header.innerText);
+  let color;
+  let greenAmount = 255;
+  let blueAmount = 0;
+  let redAmount = 0;
+
+  if (value > 0) {
+    greenAmount = Math.max(0, 255 - value * 20); // Decrease green channel
+    blueAmount = Math.min(255, value * 20); // Increase blue channel
+    color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
+  } else if (value < 0) {
+    redAmount = Math.min(255, Math.abs(value) * 20); // Increase red channel
+    greenAmount = Math.max(0, 255 + value * 20); // Decrease green channel
+    color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
+  } else {
+    color = "rgb(0, 255, 0)"; // Green at 0
+  }
+
+  background.style.backgroundColor = color;
+}
+
 			function add() {
 				header.innerText = Number(header.innerText) + 1;
 				colourChange();
