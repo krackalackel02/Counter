@@ -10,6 +10,8 @@
 			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
 			rel="stylesheet"
 		/>
+		<script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
+
 	</head>
 	<style>
 		body,
@@ -64,6 +66,31 @@
 				justify-content: center;
 			}
 		}
+		/* FOOTER */
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.fa-github {
+	color: black;
+	font-size: 40px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+	transform: rotate(360deg) scale(1.2);
+}
 	</style>
 	<body>
 		<div class="title">Counter</div>
@@ -77,31 +104,43 @@
 				<button class="btn" onclick="reset()">Reset</button>
 				<button class="btn" onclick="add()">Increase</button>
 			</div>
+			<footer class="footer">
+				<p>
+				  Copyright ©
+				  <script>
+					document.write(new Date().getFullYear())
+				  </script>
+				  Krackalackel02
+				  <a href="https://github.com/krackalackel02" target="_blank">
+					<i class="fab fa-github"></i
+				  ></a>
+				</p>
+			  </footer>
 		</div>
 		<script>
 			let header = document.getElementById("header");
 			let background = document.getElementsByClassName("container")[0];
 			function colourChange() {
-  const value = Number(header.innerText);
-  let color;
-  let greenAmount = 255;
-  let blueAmount = 0;
-  let redAmount = 0;
+				const value = Number(header.innerText);
+				let color;
+				let greenAmount = 255;
+				let blueAmount = 0;
+				let redAmount = 0;
 
-  if (value > 0) {
-    greenAmount = Math.max(0, 255 - value * 20); // Decrease green channel
-    blueAmount = Math.min(255, value * 20); // Increase blue channel
-    color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
-  } else if (value < 0) {
-    redAmount = Math.min(255, Math.abs(value) * 20); // Increase red channel
-    greenAmount = Math.max(0, 255 + value * 20); // Decrease green channel
-    color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
-  } else {
-    color = "rgb(0, 255, 0)"; // Green at 0
-  }
+				if (value > 0) {
+					greenAmount = Math.max(0, 255 - value * 20); // Decrease green channel
+					blueAmount = Math.min(255, value * 20); // Increase blue channel
+					color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
+				} else if (value < 0) {
+					redAmount = Math.min(255, Math.abs(value) * 20); // Increase red channel
+					greenAmount = Math.max(0, 255 + value * 20); // Decrease green channel
+					color = `rgb(${redAmount}, ${greenAmount}, ${blueAmount})`;
+				} else {
+					color = "rgb(0, 255, 0)"; // Green at 0
+				}
 
-  background.style.backgroundColor = color;
-}
+				background.style.backgroundColor = color;
+			}
 
 			function add() {
 				header.innerText = Number(header.innerText) + 1;
